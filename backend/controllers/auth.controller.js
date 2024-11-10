@@ -104,6 +104,7 @@ export const login = async (req, res) => {
 		generateTokenAndSetCookie(res, user._id);
 
 		user.lastLogin = new Date();
+		user.token = generateTokenAndSetCookie(res, user._id);
 		await user.save();
 
 		res.status(200).json({
